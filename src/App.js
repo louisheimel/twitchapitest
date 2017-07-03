@@ -19,19 +19,31 @@ class App extends Component {
   }
 
   render() {
-    const styles = {
+    const appStyles = {
       display: 'flex',
+      width: '100%',
       justifyContent: 'space-around',
+      flexDirection: 'row',
+    }
+
+    const buttonStyles = {
+      flexDirection: 'column',
+      justifyContent: 'space-around',
+      alignItems: 'flex-start',
+    }
+
+    const streamersStyles = {
+      display: 'flex',
     }
     return (
-      <div className="App">
-        <div style={styles}>
+      <div className="App" style={appStyles}>
+        <div style={buttonStyles}>
           <TwitchStreamerStatusButton category="All"  handleClick={this.handleClick.bind(this)} currentCategory={this.state.selectedCategory}/>
           <TwitchStreamerStatusButton category="Online"  handleClick={this.handleClick.bind(this)} currentCategory={this.state.selectedCategory}/>
           <TwitchStreamerStatusButton category="Offline"  handleClick={this.handleClick.bind(this)} currentCategory={this.state.selectedCategory}/>
         </div>
-        <div style={styles}>
-          <Streamers currentCategory={this.state.selectedCategory}/>
+        <div style={streamersStyles}>
+          <Streamers currentCategory={this.state.selectedCategory} styles={streamersStyles}/>
         </div>
       </div>
     );

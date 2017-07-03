@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import StreamerRow from './StreamerRow.js'
 
 class Streamers extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class Streamers extends Component {
         streamerData: data,
       }, () => {
         console.log('data retrieved from Twitch server!')
-        console.log(this.state.streamerData.users.map(user => user.name))
+        console.log(this.state.streamerData.users)
       })
     })
   }
@@ -51,9 +52,26 @@ class Streamers extends Component {
     }
     return (
       <div style={styles}>
-        {this.props.currentCategory === 'All' ? this.state.streamerData.users.map(user => <div>{user.name}</div>) : null}
-        {this.props.currentCategory === 'Online' ? this.state.streamerData.users.filter(user => user.online).map(user => <div>{user.name}</div>) : null}
-        {this.props.currentCategory === 'Offline' ? this.state.streamerData.users.filter(user => !user.online).map(user => <div>{user.name}</div>) : null}
+        <table className="table">
+          <thead>
+            <tr>
+              <td>
+                Logo
+              </td>
+              <td>
+                Name
+              </td>
+              <td>
+                Status
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.currentCategory === 'All' ? this.state.streamerData.users.map(e => <StreamerRow logo={e.logo} name={e.name} online={e.online} bio={e.bio} />) : null}
+            {this.props.currentCategory === 'Online' ? this.state.streamerData.users.filter(user => user.online).map(e => <StreamerRow logo={e.logo} name={e.name} online={e.online} bio={e.bio} />) : null}
+            {this.props.currentCategory === 'Offline' ? this.state.streamerData.users.filter(user => !user.online).map(e => <StreamerRow logo={e.logo} name={e.name} online={e.online} bio={e.bio} />) : null}
+          </tbody>
+        </table>
       </div>
     );
   }
