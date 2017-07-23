@@ -30,6 +30,7 @@ class App extends Component {
       flexDirection: 'column',
       justifyContent: 'space-around',
       alignItems: 'flex-start',
+      marginTop: '20px',
     }
 
     const streamersStyles = {
@@ -45,6 +46,7 @@ class App extends Component {
         <div style={streamersStyles}>
           <Streamers currentCategory={this.state.selectedCategory} styles={streamersStyles}/>
         </div>
+        <p>Code repository: <a href="https://github.com/louisheimel/twitchapitest">https://github.com/louisheimel/twitchapitest</a></p>
       </div>
     );
   }
