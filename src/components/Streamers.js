@@ -40,6 +40,7 @@ class Streamers extends Component {
       this.setState({
         streamerData: data,
       }, () => {
+        console.log('streamer data is: ' + this.state.streamerData)
         console.log('data retrieved from Twitch server!')
         console.log(this.state.streamerData.users)
       })

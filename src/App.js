@@ -24,29 +24,36 @@ class App extends Component {
       width: '100%',
       justifyContent: 'space-around',
       flexDirection: 'row',
-    }
-
-    const buttonStyles = {
+    },
+    paragraphStyles = {
+      marginBottom: '20px'
+    },
+    globalAppStyles = {
+      textAlign: 'center'
+    },
+    buttonStyles = {
       flexDirection: 'column',
       justifyContent: 'space-around',
       alignItems: 'flex-start',
       marginTop: '20px',
-    }
-
-    const streamersStyles = {
+    },
+    streamersStyles = {
       display: 'flex',
     }
+
     return (
-      <div className="App" style={appStyles}>
-        <div style={buttonStyles}>
-          <TwitchStreamerStatusButton category="All"  handleClick={this.handleClick.bind(this)} currentCategory={this.state.selectedCategory}/>
-          <TwitchStreamerStatusButton category="Online"  handleClick={this.handleClick.bind(this)} currentCategory={this.state.selectedCategory}/>
-          <TwitchStreamerStatusButton category="Offline"  handleClick={this.handleClick.bind(this)} currentCategory={this.state.selectedCategory}/>
+      <div className="App" style={globalAppStyles}>
+        <div style={appStyles}>
+          <div style={buttonStyles}>
+            <TwitchStreamerStatusButton category="All"  handleClick={this.handleClick.bind(this)} currentCategory={this.state.selectedCategory}/>
+            <TwitchStreamerStatusButton category="Online"  handleClick={this.handleClick.bind(this)} currentCategory={this.state.selectedCategory}/>
+            <TwitchStreamerStatusButton category="Offline"  handleClick={this.handleClick.bind(this)} currentCategory={this.state.selectedCategory}/>
+          </div>
+          <div style={streamersStyles}>
+            <Streamers currentCategory={this.state.selectedCategory} styles={streamersStyles}/>
+          </div>
         </div>
-        <div style={streamersStyles}>
-          <Streamers currentCategory={this.state.selectedCategory} styles={streamersStyles}/>
-        </div>
-        <p>Code repository: <a href="https://github.com/louisheimel/twitchapitest">https://github.com/louisheimel/twitchapitest</a></p>
+        <p style={paragraphStyles}>Code repository: <a href="https://github.com/louisheimel/twitchapitest">https://github.com/louisheimel/twitchapitest</a></p>
       </div>
     );
   }
