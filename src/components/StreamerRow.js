@@ -13,7 +13,7 @@ class StreamerRow extends Component {
     return <tr>
             <td><img style={styles} src={this.props.logo} alt={this.props.bio} /></td>
             <td><a href={"https://www.twitch.tv/" + this.props.name}>{this.props.name}</a></td>
-            <td>{this.props.online ? this.props.status : 'Offline'}</td>
+            <td>{this.props.online ? this.props.bio : 'Offline'}</td>
           </tr>;
   }
 }

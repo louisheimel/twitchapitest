@@ -8,8 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedCategory: 'All'
-    }
+      selectedCategory: 'All' }
   }
 
   handleClick(state) {
